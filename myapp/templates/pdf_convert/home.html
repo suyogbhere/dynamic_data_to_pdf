@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+    <h1 class="text-center">Show Info</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stu in student %}
+                        <tr>
+                            <td scope="row">{{stu.id}}</td>
+                            <td>{{stu.name}}</td>
+                            <td>{{stu.email}}</td>
+                            <td>{{stu.address}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'create_pdf' %}" class="btn btn-primary m-2">Create PDF</a>
+            </div>
+        </div>
+    </div>
+    
+    {% block content %}
+    {% endblock content %}
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>
